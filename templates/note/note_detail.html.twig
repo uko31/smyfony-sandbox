@@ -4,6 +4,15 @@
 
 {% block body %}
 
-        <li class="list-group-item">{{ note.title }}</li>
+        <ul class="list-group">
+                <li class="list-group-item">Title: {{ note.title }}</li>
+                <li class="list-group-item">Note: {{ note.note }}</li>
+                {% for tag in note.tags %}
+                        <li class="list-group-item">tags: {{ tag.name }}</li>
+                {% else %}
+                        <li class="list-group-item">no tags...</li>
+                {% endfor %}
+        </ul>
+        
     
 {% endblock %}

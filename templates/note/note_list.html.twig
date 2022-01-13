@@ -4,14 +4,14 @@
 
 {% block body %}
 
-    <ul class="list-group">
+    <div class="list-group">
     {% for note in notes %}
-        <li class="list-group-item">
-            <a href="{{ path('note_detail', {'id': note.id}) }}">{{ note.title }}></a>
-        </li>
+        <a class="list-group-item list-group-item-action" href="{{ path('note_detail', {'id': note.id}) }}">
+            {{ note.title }} {{ note.tags | length }}
+        </a>
     {% else %}
-        <li class="list-group-item">There are no note to display to far... add one ?</li>
+        <a class="list-group-item list-group-item-action">There are no note to display to far... add one ?</a>
     {% endfor %}
-    </ul>
+    </div>
     
 {% endblock %}

@@ -31,7 +31,7 @@ class NoteController extends AbstractController
     {
         $note = $this->noteRepository->findOneById($id);
 
-        return $this->render('note/note_list.html.twig', [
+        return $this->render('note/note_detail.html.twig', [
             'note' => $note,
         ]);
     }
