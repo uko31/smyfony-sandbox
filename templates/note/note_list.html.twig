@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sandbox Notes!{% endblock %}
+
+{% block body %}
+
+    <ul class="list-group">
+    {% for note in notes %}
+        <li class="list-group-item">{{ note.title }}</li>
+    {% else %}
+        <li class="list-group-item">There are no note to display to far... add one ?</li>
+    {% endfor %}
+    </ul>
+    
+{% endblock %}
