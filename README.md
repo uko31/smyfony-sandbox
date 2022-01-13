@@ -13,3 +13,4 @@ todo
  - add role to add/remove tags to the note you own
  - add a creation/modification date to a note
  - add comment to notes from other/same user 
+ - code some testing
