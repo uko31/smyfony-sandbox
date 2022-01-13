@@ -13,16 +13,35 @@
         {% endblock %}
     </head>
     <body>
-        <div>
-            {% block header %}{% endblock %}
-        </div>
         <div class='row'>
             <div class='col-md-6 offset-md-3'>
-                {% block body %}{% endblock %}
+                <div id="header">
+                    {% block header %}
+                    <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('sandbox_home') }}">Sandbox!</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Sign in</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Sign up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Logout</a>
+                        </li>
+                    </ul>
+                    {% endblock %}
+                </div>
+
+                <div id="body">
+                    {% block body %}{% endblock %}
+                </div>
+
+                <div id="footer">
+                    {% block footer %}{% endblock %}
+                </div>
             </div>
-        </div>
-        <div>
-            {% block footer %}{% endblock %}
         </div>
     </body>
 </html>
