@@ -21,15 +21,22 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('sandbox_home') }}">Sandbox!</a>
                         </li>
+                        {% if app.user %}
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Sign in</a>
+                            <a class="nav-link" href="{{ path('sandbox_logout') }}">Welcome {{ app.user.username }}!</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('sandbox_logout') }}">Logout</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('sandbox_login') }}">Sign in</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Sign up</a>
+                            <a class="nav-link" href="{{ path('sandbox_register') }}">Sign up</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Logout</a>
-                        </li>
+                        {% endif %}
                     </ul>
                     {% endblock %}
                 </div>

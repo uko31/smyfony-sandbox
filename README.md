@@ -12,3 +12,4 @@ composer require orm-fixtures --dev
 
 composer require zenstruck/foundry --dev
 
+composer require security
