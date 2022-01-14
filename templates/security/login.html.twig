@@ -5,6 +5,18 @@
 {% block body %}
 
     <center><h4>Sign-in!</h4></center>
-    {{ form(form) }}
+
+    {% if error %}
+        <div class="alert alert-danger" role="alert">
+        Error: {{ error.messageKey }}
+        </div>
+    {% endif %}
+
+    {{ form_start(form) }}
+        {{ form_row(form.username, {'value': last_username}) }}
+        {{ form_row(form.password) }}
+        {{ form_row(form.csrf) }}
+        {{ form_row(form.login) }}
+    {{ form_end(form) }}
 
 {% endblock %}
