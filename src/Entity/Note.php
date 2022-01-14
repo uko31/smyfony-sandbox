@@ -24,6 +24,16 @@ class Note
     #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'notes')]
     private $tags;
 
+    #[ORM\ManyToOne(targetEntity: Account::class, inversedBy: 'notes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $author;
+
+    #[ORM\Column(type: 'datetime')]
+    private $createdAt;
+
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private $modifiedAt;
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();
@@ -78,6 +88,42 @@ class Note
     public function removeTag(Tag $tag): self
     {
         $this->tags->removeElement($tag);
+
+        return $this;
+    }
+
+    public function getAuthor(): ?Account
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?Account $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getModifiedAt(): ?\DateTimeInterface
+    {
+        return $this->modifiedAt;
+    }
+
+    public function setModifiedAt(?\DateTimeInterface $modifiedAt): self
+    {
+        $this->modifiedAt = $modifiedAt;
 
         return $this;
     }

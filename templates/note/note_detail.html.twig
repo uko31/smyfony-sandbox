@@ -6,12 +6,19 @@
 
         <ul class="list-group">
                 <li class="list-group-item">Title: {{ note.title }}</li>
+                <li class="list-group-item">Created at: {{ note.createdAt|date('d/m/y H:i') }}</li>
+                <li class="list-group-item">Modified at: {{ note.modifiedAt|date('d/m/y H:i') }}</li>
                 <li class="list-group-item">Note: {{ note.note }}</li>
+                <li class="list-group-item">
+                        Author: <a href="#">{{ note.author.username }}</a>
+                </li>
+                <li class="list-group-item">Tags: 
                 {% for tag in note.tags %}
-                        <li class="list-group-item">tags: {{ tag.name }}</li>
+                        <a class="btn btn-secondary btn-sm" href="#">{{ tag.name }}</a>
                 {% else %}
-                        <li class="list-group-item">no tags...</li>
+                        no tags...
                 {% endfor %}
+                </li>
         </ul>
         
     

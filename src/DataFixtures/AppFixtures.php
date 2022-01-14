@@ -2,36 +2,42 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Note;
-use App\Entity\Tag;
+use App\Entity\Account;
+use App\Factory\AccountFactory;
 use App\Factory\NoteFactory;
 use App\Factory\TagFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
+    private $passwordHasher;
+
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
+    {
+        $this->passwordHasher = $passwordHasher;
+    }
+
     public function load(ObjectManager $manager): void
     {
-        /*
-        $note = new Note();
-        $note->setTitle('this is test note');
-        $note->setNote('This is somme data to fill the note with some irrelevant stuff.');
-        $manager->persist($note);
+        $michaelis = new Account();
+        $michaelis->setUsername('michaelis');
+        $michaelis->setPassword($this->passwordHasher->hashPassword(
+            $michaelis,
+            'test'
+        ));
+        $manager->persist($michaelis);
 
-        $tag = new Tag();
-        $tag->setName('brillant');
-        $manager->persist($tag);
-        */
-
+        AccountFactory::new()->createMany(5);
         TagFactory::new()->createMany(5);
         NoteFactory::new()
-            ->many(10)
-            ->create( function() {
-                return ['tags' => TagFactory::randomRange(0,3)];
-            }
-        );
-
+            ->createMany(10, function() {
+                return [
+                    'author' => AccountFactory::random(),
+                    'tags' => TagFactory::randomRange(0,3),
+                ];
+            });
 
         $manager->flush();
     }

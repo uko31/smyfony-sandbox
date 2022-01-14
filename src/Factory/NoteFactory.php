@@ -41,6 +41,8 @@ final class NoteFactory extends ModelFactory
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
             'title' => self::faker()->realText(50),
             'note' => self::faker()->paragraph(),
+            'createdAt' => self::faker()->dateTimeBetween('-1 year'),
+            'modifiedAt' => self::faker()->dateTimeBetween('-1 month'),
         ];
     }
 
