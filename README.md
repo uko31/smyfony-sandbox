@@ -7,6 +7,8 @@ My Symfony Sandbox Project
 - composer require orm-fixtures --dev
 - composer require zenstruck/foundry --dev
 - composer require security
+- composer require --dev phpunit/phpunit symfony/test-pack
+  (to run the tests : php ./vendor/bin/phpunit)
 
 todo
  - add role to add/remove tags to the note you own
