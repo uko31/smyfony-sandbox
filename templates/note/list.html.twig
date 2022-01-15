@@ -4,10 +4,21 @@
 
 {% block body %}
 
+    <div class="jumbotron">
+        <h3 class="display-4">Notes List</h3>
+        <hr>
+        <p>
+            This is a simple app to take notes, tag them, comment, keep track, search...
+        </p>
+        <p class="lead">
+            <a href="{{ path('note_new') }}" class="btn btn-secondary btn-sm">Add Note</a>
+        </p>
+    </div>
+
     <div class="list-group">
     {% for note in notes %}
         <a class="list-group-item list-group-item-action" href="{{ path('note_detail', {'id': note.id}) }}">
-            {{ note.title }} {{ note.tags | length }}
+            {{ note.title }} - [tags {{ note.tags | length }}]
         </a>
     {% else %}
         <a class="list-group-item list-group-item-action">There are no note to display to far... add one ?</a>

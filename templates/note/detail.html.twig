@@ -8,7 +8,7 @@
                 <li class="list-group-item">Title: {{ note.title }}</li>
                 <li class="list-group-item">Created at: {{ note.createdAt|date('d/m/y H:i') }}</li>
                 <li class="list-group-item">Modified at: {{ note.modifiedAt|date('d/m/y H:i') }}</li>
-                <li class="list-group-item">Note: {{ note.note }}</li>
+                <li class="list-group-item">Note: <p>{{ note.note }}<p></li>
                 <li class="list-group-item">
                         Author: <a href="#">{{ note.author.username }}</a>
                 </li>
